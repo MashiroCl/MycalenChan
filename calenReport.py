@@ -13,15 +13,13 @@ def commandParser():
 
 def runCommand(command:str):
     print("command",command)
-    p=subprocess.Popen(command,shell=True)
+    p=subprocess.Popen(command.split())
     pid = p.pid
     user = getpass.getuser()
     passCommand(user=user,pid=pid,done=False)
     p.wait()
     passCommand(user=user, pid=pid, done=True)
 
-def runCommand2(command:str):
-    status,pid=subprocess.Popen(command.split())
 
 def passCommand(user:str,pid:str,done:bool):
     dict={"processName":pid,"userName":user,"done":done}
@@ -32,20 +30,4 @@ def passCommand(user:str,pid:str,done:bool):
 
 if __name__=="__main__":
     args = commandParser()
-
-    # try:
-    #     command = " "+args.command
-    #     print("Monitoring Comand | " + args.command)
-    #     if(os.system(command)!=0):
-    #         raise Exception
-    #
-    #     user = getpass.getuser()
-    #     pid = os.getpid()
-    #     print("user is ",user)
-    #     print("pid is ",pid)
-    # except TypeError as err:
-    #     print("TypeError: {0}, command can not be null, please use -c option".format(err))
-    # except:
-    #     print("Error when processing command")
-
     runCommand(args.command)
