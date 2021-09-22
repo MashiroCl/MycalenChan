@@ -1,6 +1,5 @@
 import argparse
 import getpass
-import os
 import json
 import Client
 import subprocess
