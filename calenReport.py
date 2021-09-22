@@ -7,7 +7,8 @@ import subprocess
 
 def commandParser():
     parser = argparse.ArgumentParser(description="This is a script used to let calenChan monitor command status")
-    parser.add_argument('-c', '--command', help="command that calenChan need to monitor")
+    # parser.add_argument('c', '--command', help="command that calenChan need to monitor")
+    parser.add_argument('command',help="command that calenChan need to monitor")
     args = parser.parse_args()
     return args
 
